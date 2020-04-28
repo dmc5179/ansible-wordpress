@@ -75,7 +75,7 @@
 - name: Restart httpd
   service:
     name: httpd
-    state: restart
+    state: restarted
   when:
     (ansible_distribution == 'RedHat') or
     (ansible_distribution == 'Fedora') or
