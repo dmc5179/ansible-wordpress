@@ -1,10 +1,18 @@
 # tasks file for wordpress
 ---
+- include: dependencies.yml
+
 - include: wp-cli.yml
   tags:
     - configuration
     - wordpress
     - wordpress-wp-cli
+
+- include: database.yml
+  tags:
+    - configuration
+    - wordpress
+    - wordpress-core
 
 - include: core.yml
   tags:

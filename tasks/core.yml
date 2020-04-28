@@ -1,7 +1,7 @@
 # tasks file for wordpress, core
 ---
 - name: core | check download
-  command: test -f {{ item.path }}/wp-load.php
+  command: test -f "{{ item.path }}/wp-load.php"
   register: _check_download
   failed_when: false
   changed_when: false
@@ -14,7 +14,7 @@
     wp-cli core download
     --allow-root --no-color --path='{{ item.item.path }}'
     --locale='{{ item.item.locale | default('en_US') }}'
-  with_items: "{{ _check_download.results | default([]) }}"
+  with_items: "{{ _check_download.results }}"
   when: item.rc != 0
   tags:
     - wordpress-core-downloaded

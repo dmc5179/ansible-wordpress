@@ -1,0 +1,26 @@
+---
+#- name: Create Wordpress User
+#  mysql_user:
+#    name: "{{ item.dbuser }}"
+#    password: "{{ item.dbpass }}"
+#    priv: '*.*:ALL'
+#    state: present
+#  with_items: "{{ wordpress_installs }}"
+
+- name: Create Wordpress User
+  command:
+    cmd: mysql -u root -e "create user 'wordpress'@'localhost' identified by 'heCrE7d2KEs'"
+  ignore_errors: true
+
+- name: Grant wordpress user priv
+  command:
+    cmd: mysql -u root -e "grant all privileges on *.* to 'wordpress'@'localhost'"
+
+- name: Flush privs
+  command:
+    cmd: mysql -u root -e "flush privileges"
+
+- name: Create wordpress database
+  command:
+    cmd: mysql -u root -e "create database wordpress"
+  ignore_errors: true
