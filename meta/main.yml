@@ -18,8 +18,8 @@ galaxy_info:
         - wheezy
         - jessie
         - stretch
-     - name: EL
-       versions:
+    - name: EL
+      versions:
         - 8
   galaxy_tags:
     - web
