@@ -67,3 +67,12 @@
     - configuration
     - wordpress
     - wordpress-chown
+
+- name: Restart httpd
+  service:
+    name: httpd
+    state: restart
+  when:
+    (ansible_distribution == 'RedHat') or
+    (ansible_distribution == 'Fedora') or
+    (ansible_distribution == 'CentOS')
